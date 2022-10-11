@@ -33,7 +33,7 @@ const Wrapper = styled.div`
   padding: 5rem 0rem;
   width: 100%;
   min-height: 100vh;
-  background-color: ${({ theme }) => theme.mainColor};
+  background-color: ${({ theme }) => theme.gray};
   display: flex;
   flex-direction: column;
   justify-content: center;
