@@ -57,10 +57,11 @@ const SignUp = () => {
         <ButtonWrapper>
           <Button
             width={"100%"}
-            height={"1rem"}
+            height={"1.5rem"}
             content={"회원가입"}
             fontSize={"0.8rem"}
             borderRadius={"0.3rem"}
+            padding={"1.1rem"}
           />
         </ButtonWrapper>
       </Form>
@@ -69,8 +70,8 @@ const SignUp = () => {
 };
 
 const Wrapper = styled.div`
-  width: 40%;
-  border-radius: 10px;
+  width: 35%;
+  border-radius: 0.3rem;
   background-color: #ffffff;
   margin: 0rem auto;
   display: flex;
@@ -83,8 +84,8 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  color: ${({ theme }) => theme.subColor};
-  font-size: 1.8rem;
+  color: ${({ theme }) => theme.black};
+  font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 0rem;
 `;
@@ -99,10 +100,12 @@ const Form = styled.form`
 `;
 
 const InputWrapper = styled.div`
+  width: 90%;
   margin: 1rem 0rem;
 `;
 
 const ButtonWrapper = styled.div`
+  width: 90%;
   margin-top: 1rem;
 `;
 
