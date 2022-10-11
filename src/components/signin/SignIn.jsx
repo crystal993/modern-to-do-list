@@ -17,10 +17,12 @@ const SignIn = () => {
   return (
     <Wrapper onSubmit={onSubmitHandler}>
       <Title>LOGIN</Title>
+      <Title>로그인</Title>
       <Form>
         <InputWrapper>
           <Label
             label={"Email"}
+            label={"이메일"}
             labelFontSize={"1rem"}
             width={"100%"}
             htmlFor={"email"}
@@ -38,7 +40,7 @@ const SignIn = () => {
         </InputWrapper>
         <InputWrapper>
           <Label
-            label={"Password"}
+            label={"패스워드"}
             labelFontSize={"1rem"}
             width={"100%"}
             htmlFor={"password"}
@@ -57,10 +59,11 @@ const SignIn = () => {
         <ButtonWrapper>
           <Button
             width={"100%"}
-            height={"1rem"}
+            height={"1.5rem"}
             content={"로그인"}
             fontSize={"0.8rem"}
             borderRadius={"0.3rem"}
+            padding={"1.1rem"}
           />
         </ButtonWrapper>
       </Form>
@@ -76,7 +79,7 @@ const SignIn = () => {
 };
 
 const Wrapper = styled.div`
-  width: 40%;
+  width: 35%;
   border-radius: 10px;
   background-color: #ffffff;
   margin: 0rem auto;
@@ -90,8 +93,8 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  color: ${({ theme }) => theme.subColor};
-  font-size: 1.8rem;
+  color: ${({ theme }) => theme.black};
+  font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 0rem;
 `;
@@ -99,6 +102,7 @@ const Title = styled.h1`
 const Form = styled.form`
   width: 100%;
   padding: 2rem;
+  padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -106,10 +110,12 @@ const Form = styled.form`
 `;
 
 const InputWrapper = styled.div`
+  width: 90%;
   margin: 1rem 0rem;
 `;
 
 const ButtonWrapper = styled.div`
+  width: 90%;
   margin-top: 1rem;
 `;
 
