@@ -58,6 +58,7 @@ const SignUp = () => {
             height={"1rem"}
             content={"회원가입"}
             fontSize={"0.8rem"}
+            borderRadius={"0.3rem"}
           />
         </ButtonWrapper>
       </Form>

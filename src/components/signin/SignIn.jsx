@@ -58,6 +58,7 @@ const SignIn = () => {
             height={"1rem"}
             content={"로그인"}
             fontSize={"0.8rem"}
+            borderRadius={"0.3rem"}
           />
         </ButtonWrapper>
       </Form>

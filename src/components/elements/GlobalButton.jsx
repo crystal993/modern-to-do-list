@@ -10,6 +10,7 @@ function GlobalButton({
   fontWeight,
   fontSize,
   color,
+  borderRadius = "0.5rem",
   padding = "1rem",
 }) {
   return (
@@ -23,6 +24,7 @@ function GlobalButton({
           fontSize={fontSize}
           color={color}
           padding={padding}
+          borderRadius={borderRadius}
         >
           {content}
         </Btn>
@@ -46,7 +48,7 @@ const Btn = styled.button`
   font-weight: ${(props) => props.fontWeight};
   color: ${(props) =>
     props.color === "subColor" ? props.theme.mainColor : props.theme.white};
-  border-radius: 0.5rem;
+  border-radius: ${(props) => props.borderRadius};
   transition: ${(props) => props.theme.transition};
   border: ${(props) =>
     props.color === "subColor" ? `1px solid ${props.theme.mainColor}` : "none"};
