@@ -64,6 +64,13 @@ const SignIn = () => {
           />
         </ButtonWrapper>
       </Form>
+      <Label
+        label={"회원가입"}
+        onClick={() => setIsToggled(true)}
+        textDecoration={"underline"}
+        labelFontSize={"0.8rem"}
+        cursor={"pointer"}
+      ></Label>
     </Wrapper>
   );
 };

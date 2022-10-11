@@ -1,10 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 
-const GlobalLabel = ({ htmlFor, labelFontSize, label, width }) => {
+const GlobalLabel = ({
+  htmlFor,
+  labelFontSize,
+  label,
+  width,
+  onClick,
+  textDecoration,
+  color = "black",
+  cursor,
+}) => {
   return (
-    <LabelWrapper width={width}>
-      <StyledLabel htmlFor={htmlFor} labelFontSize={labelFontSize}>
+    <LabelWrapper width={width} onClick={onClick}>
+      <StyledLabel
+        htmlFor={htmlFor}
+        labelFontSize={labelFontSize}
+        color={color}
+        textDecoration={textDecoration}
+        cursor={cursor}
+      >
         {label}
       </StyledLabel>
     </LabelWrapper>
@@ -26,7 +41,9 @@ const StyledLabel = styled.label`
   justify-content: flex-start;
   margin: 3px;
   font-size: ${({ labelFontSize }) => labelFontSize};
-  color: ${({ theme }) => theme.subColor};
+  color: ${({ color, theme }) => (color ? color : theme.black)};
+  text-decoration: ${({ textDecoration }) => textDecoration};
+  cursor: ${({ cursor }) => cursor};
 `;
 
 export default GlobalLabel;
