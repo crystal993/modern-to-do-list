@@ -4,6 +4,8 @@ import Button from "../elements/GlobalButton";
 import Input from "../elements/GlobalInput";
 import Label from "../elements/GlobalLabel";
 import { emailCheck, passwordCheck } from "../../shared/regex";
+import axios from "axios";
+import { apis } from "../../shared/axios";
 
 const SignUp = ({ setIsToggled }) => {
   const initialState = {
@@ -41,13 +43,25 @@ const SignUp = ({ setIsToggled }) => {
     }
   };
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
+  const base = {
+    server_https: process.env.REACT_APP_HTTPS_URI,
+  };
 
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
     if (!emailCheck(formData.email) || !passwordCheck(formData.password)) {
       alert("아이디나 비밀번호 형식이 틀렸습니다.");
     } else {
-      setIsToggled(false);
+      const { data } = await axios.post(
+        `${base.server_https}/auth/signup`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (data) setIsToggled(false);
     }
   };
 
