@@ -6,6 +6,7 @@ const GlobalInput = ({
   name,
   type,
   placeholder,
+  required,
   value,
   width,
   height,
@@ -25,6 +26,7 @@ const GlobalInput = ({
           height={height}
           color={color}
           fontSize={fontSize}
+          required={required}
         />
       </StyledInputWrapper>
     </>
@@ -49,9 +51,13 @@ const StyledInput = styled.input`
   color: rgba(0, 0, 0, 0.85);
   font-size: ${({ fontSize }) => fontSize};
   background-color: #fff;
-  border-radius: 0.5rem;
   transition: all 0.3s;
   border: 1px solid #d5d0d0;
+  border: 2px solid ${({ theme }) => theme.gray};
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 2px;
   &:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset;
   }

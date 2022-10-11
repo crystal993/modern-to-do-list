@@ -30,6 +30,7 @@ const SignIn = () => {
             name={"email"}
             value={formData.email}
             onChangeHandler={onChangeHandler}
+            required={"required"}
             placeholder={"이메일을 입력해주세요."}
             width={"100%"}
             fontSize={"1rem"}
@@ -47,6 +48,7 @@ const SignIn = () => {
             name={"password"}
             value={formData.password}
             onChangeHandler={onChangeHandler}
+            required={"required"}
             placeholder={"8자리 이상 입력해주세요."}
             width={"100%"}
             fontSize={"1rem"}
