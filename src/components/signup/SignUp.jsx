@@ -1,26 +1,63 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../elements/GlobalButton";
 import Input from "../elements/GlobalInput";
 import Label from "../elements/GlobalLabel";
+import { emailCheck, passwordCheck } from "../../shared/regex";
 
-const SignUp = () => {
+const SignUp = ({ setIsToggled }) => {
   const initialState = {
     email: "",
     password: "",
   };
 
   const [formData, setFormData] = useState(initialState);
+  const [emailMsg, setEmailMsg] = useState("");
+  const [pwMsg, setPwMsg] = useState("");
+  const [emailMsgColor, setEmailMsgColor] = useState("");
+  const [pwMsgColor, setPwMsgColor] = useState("");
 
-  const onChangeHandler = (e) => {};
-  const onSubmitHandler = () => {};
+  const onChangeHandler = (e) => {
+    const { value, name } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (name === "email") {
+      if (!emailCheck(value)) {
+        setEmailMsg("@를 포함해주세요.");
+        setEmailMsgColor("#FF1F2F");
+      } else {
+        setEmailMsg("올바른 형식입니다.");
+        setEmailMsgColor("#5D5FEF");
+      }
+    }
+
+    if (name === "password") {
+      if (passwordCheck(value)) {
+        setPwMsg("올바른 형식입니다.");
+        setPwMsgColor("#5D5FEF");
+      } else {
+        setPwMsg("8자리 이상 입력해주세요.");
+        setPwMsgColor("#FF1F2F");
+      }
+    }
+  };
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+
+    if (!emailCheck(formData.email) || !passwordCheck(formData.password)) {
+      alert("아이디나 비밀번호 형식이 틀렸습니다.");
+    } else {
+      setIsToggled(false);
+    }
+  };
+
   return (
     <Wrapper onSubmit={onSubmitHandler}>
-      <Title>Sign Up</Title>
+      <Title>회원가입</Title>
       <Form>
         <InputWrapper>
           <Label
-            label={"Email"}
+            label={"이메일"}
             labelFontSize={"1rem"}
             width={"100%"}
             htmlFor={"email"}
@@ -29,16 +66,17 @@ const SignUp = () => {
             type={"text"}
             name={"email"}
             value={formData.email}
-            onChangeHandler={onChangeHandler}
+            onChange={onChangeHandler}
             required={"required"}
             placeholder={"이메일을 입력해주세요."}
             width={"100%"}
             fontSize={"1rem"}
           />
+          <Label label={emailMsg} color={emailMsgColor}></Label>
         </InputWrapper>
         <InputWrapper>
           <Label
-            label={"Password"}
+            label={"패스워드"}
             labelFontSize={"1rem"}
             width={"100%"}
             htmlFor={"password"}
@@ -47,12 +85,13 @@ const SignUp = () => {
             type={"password"}
             name={"password"}
             value={formData.password}
-            onChangeHandler={onChangeHandler}
+            onChange={onChangeHandler}
             required={"required"}
             placeholder={"8자리 이상 입력해주세요."}
             width={"100%"}
             fontSize={"1rem"}
           />
+          <Label label={pwMsg} color={pwMsgColor}></Label>
         </InputWrapper>
         <ButtonWrapper>
           <Button
