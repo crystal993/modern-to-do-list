@@ -16,11 +16,15 @@ const Main = () => {
   return (
     <Wrapper>
       <ToggleWrapper>
-        Login
         <Toggle isToggled={isToggled} onToggle={onToggleHandler} />
-        SignUp
       </ToggleWrapper>
-      <FormWrapper>{!isToggled ? <SignIn /> : <SignUp />}</FormWrapper>
+      <FormWrapper>
+        {!isToggled ? (
+          <SignIn setIsToggled={setIsToggled} />
+        ) : (
+          <SignUp setIsToggled={setIsToggled} />
+        )}
+      </FormWrapper>
     </Wrapper>
   );
 };

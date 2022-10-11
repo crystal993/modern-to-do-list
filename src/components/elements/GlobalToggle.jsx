@@ -29,7 +29,7 @@ const ToggleLabel = styled.label`
   width: 4.2rem;
   height: 2.1rem;
   border-radius: 1.5rem;
-  background: ${({ theme }) => theme.gray};
+  background: ${({ theme }) => theme.backgroundColor};
   cursor: pointer;
   &::after {
     content: "";
@@ -39,7 +39,7 @@ const ToggleLabel = styled.label`
     height: 1.4rem;
     margin: 0.3rem;
     margin-left: 0.3rem;
-    background: ${({ theme }) => theme.backgroundColor};
+    background: ${({ theme }) => theme.lightgray};
     box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
     transition: ${({ theme }) => theme.transition};
     @media (max-width: 374px) {
