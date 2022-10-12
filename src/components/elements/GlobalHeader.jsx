@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 const GlobalHeader = () => {
   return (
     <Wrapper>
-      <Title to="/">My Todo List</Title>
+      <Title to="/">
+        <h1>My Todo List</h1>
+      </Title>
     </Wrapper>
   );
 };
