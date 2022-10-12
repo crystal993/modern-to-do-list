@@ -27,6 +27,18 @@ instance.interceptors.response.use(
     return response;
   },
   function (error) {
+    if (error.response && error.response.data.statusCode) {
+      switch (error.response.data.statusCode) {
+        case 400:
+        case 401:
+        case 402:
+        case 500:
+          alert(error.response.data.message);
+          break;
+        default:
+          return;
+      }
+    }
     return Promise.reject(error);
   }
 );
