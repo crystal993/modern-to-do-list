@@ -24,6 +24,7 @@ const TodoList = ({ setTodoList, todoList }) => {
             ? {
                 ...todo,
                 todo: data.todo,
+                isCompleted: data.isCompleted,
               }
             : todo
         )
@@ -38,7 +39,7 @@ const TodoList = ({ setTodoList, todoList }) => {
           todoList.map((todo) => {
             return (
               <Fragment key={todo.id}>
-                {todo.isCompleted === false && (
+                {todo && (
                   <Todo
                     todo={todo}
                     key={todo.id}

@@ -26,12 +26,13 @@ const Todo = ({ todo, onDeleteHanlder, onUpdateHandler }) => {
   };
   return (
     <Wrapper>
-      {todo.isCompleted ? (
+      {todoItem.isCompleted ? (
         <Icon
           icon={faSquareCheck}
           color={"#5d5fef"}
           width={"1rem"}
           height={"1rem"}
+          onClick={() => setTodoItem({ ...todoItem, isCompleted: false })}
         />
       ) : (
         <Icon
@@ -39,15 +40,24 @@ const Todo = ({ todo, onDeleteHanlder, onUpdateHandler }) => {
           color={"#cbcbcb"}
           width={"1rem"}
           height={"1rem"}
+          onClick={() => setTodoItem({ ...todoItem, isCompleted: true })}
         />
       )}
       <ContentWrapper>
         {!isEdit ? (
-          <TodoTxt>
-            {todo.todo.length > 28
-              ? todo.todo.slice(0, 28).concat("...")
-              : todo.todo}
-          </TodoTxt>
+          todoItem.isCompleted ? (
+            <TodoTxt textDecoration={"line-through"}>
+              {todo.todo.length > 28
+                ? todo.todo.slice(0, 28).concat("...")
+                : todo.todo}
+            </TodoTxt>
+          ) : (
+            <TodoTxt>
+              {todo.todo.length > 28
+                ? todo.todo.slice(0, 28).concat("...")
+                : todo.todo}
+            </TodoTxt>
+          )
         ) : (
           <Input
             name={"todo"}
@@ -72,7 +82,10 @@ const Todo = ({ todo, onDeleteHanlder, onUpdateHandler }) => {
             padding={"0.3rem"}
           />
           <Icon
-            onClick={() => onDeleteHanlder(todoItem.id)}
+            onClick={(e) => {
+              e.preventDefault();
+              onDeleteHanlder(todoItem.id);
+            }}
             icon={faTrash}
             color={"#cbcbcb"}
             hoverColor={"#5d5fef"}
@@ -83,20 +96,21 @@ const Todo = ({ todo, onDeleteHanlder, onUpdateHandler }) => {
       ) : (
         <ButtonsWrapper>
           <Button
-            onClick={() => setIsEdit(false)}
-            content={"취소"}
-            fontSize={"0.5rem"}
-            padding={"0.6rem"}
-            color={"gray"}
-          />
-          <Button
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               onUpdateHandler(todoItem.id, todoItem.todo, todoItem.isCompleted);
               setIsEdit(false);
             }}
             content={"제출"}
             fontSize={"0.5rem"}
             padding={"0.6rem"}
+          />
+          <Button
+            onClick={() => setIsEdit(false)}
+            content={"취소"}
+            fontSize={"0.5rem"}
+            padding={"0.6rem"}
+            color={"gray"}
           />
         </ButtonsWrapper>
       )}
@@ -139,6 +153,7 @@ const TodoTxt = styled.div`
   font-weight: 500;
   width: 100%;
   text-align: left;
+  text-decoration: ${(props) => props.textDecoration};
 `;
 
 export default Todo;
