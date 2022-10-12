@@ -4,7 +4,6 @@ import Button from "../elements/GlobalButton";
 import Input from "../elements/GlobalInput";
 import Label from "../elements/GlobalLabel";
 import { emailCheck, passwordCheck } from "../../shared/regex";
-import axios from "axios";
 import { apis } from "../../shared/axios";
 
 const SignUp = ({ setIsToggled }) => {
