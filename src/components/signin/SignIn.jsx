@@ -126,6 +126,7 @@ const SignIn = ({ setIsToggled }) => {
               borderRadius={"0.3rem"}
               padding={"1.1rem"}
               onClick={onSubmitHandler}
+              cursor={"pointer"}
             />
           ) : (
             <Button
