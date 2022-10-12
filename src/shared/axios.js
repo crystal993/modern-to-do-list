@@ -31,7 +31,6 @@ instance.interceptors.response.use(
   }
 );
 
-export const apis = {};
 export const apis = {
   //sign_up
   sign_up: (formData) => {
@@ -40,4 +39,8 @@ export const apis = {
   //sign_in
   sign_in: (formData) => {
     return instance.post(`/auth/signin`, formData);
+  },
+  // todo : CRUD
+  create_todo: (todo) => {
+    return instance.post("/todos", todo);
   },
