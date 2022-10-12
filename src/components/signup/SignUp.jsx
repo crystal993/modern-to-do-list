@@ -18,6 +18,8 @@ const SignUp = ({ setIsToggled }) => {
   const [pwMsg, setPwMsg] = useState("");
   const [emailMsgColor, setEmailMsgColor] = useState("");
   const [pwMsgColor, setPwMsgColor] = useState("");
+  const [pwValidCheck, setPwVaildCheck] = useState(false);
+  const [emailValidCheck, setEmailVaildCheck] = useState(false);
 
   const onChangeHandler = (e) => {
     const { value, name } = e.target;
@@ -42,9 +44,11 @@ const SignUp = ({ setIsToggled }) => {
       if (passwordCheck(value)) {
         setPwMsg("올바른 형식입니다.");
         setPwMsgColor("#5D5FEF");
+        setPwVaildCheck(true);
       } else {
         setPwMsg("8자리 이상 입력해주세요.");
         setPwMsgColor("#FF1F2F");
+        setPwVaildCheck(false);
       }
     }
   };
@@ -59,7 +63,7 @@ const SignUp = ({ setIsToggled }) => {
   };
 
   return (
-    <Wrapper onSubmit={onSubmitHandler}>
+    <Wrapper>
       <Title>회원가입</Title>
       <Form>
         <InputWrapper>
@@ -101,14 +105,31 @@ const SignUp = ({ setIsToggled }) => {
           <Label label={pwMsg} color={pwMsgColor}></Label>
         </InputWrapper>
         <ButtonWrapper>
-          <Button
-            width={"100%"}
-            height={"1.5rem"}
-            content={"회원가입"}
-            fontSize={"0.8rem"}
-            borderRadius={"0.3rem"}
-            padding={"1.1rem"}
-          />
+          {pwValidCheck && emailValidCheck ? (
+            <Button
+              width={"100%"}
+              height={"1.5rem"}
+              content={"회원가입"}
+              fontSize={"0.8rem"}
+              borderRadius={"0.3rem"}
+              padding={"1.1rem"}
+              onClick={onSubmitHandler}
+            />
+          ) : (
+            <Button
+              width={"100%"}
+              height={"1.5rem"}
+              content={"회원가입"}
+              fontSize={"0.8rem"}
+              borderRadius={"0.3rem"}
+              padding={"1.1rem"}
+              color={"gray"}
+              onClick={(e) => {
+                e.preventDefault();
+                setIsToggled(true);
+              }}
+            />
+          )}
         </ButtonWrapper>
       </Form>
     </Wrapper>
