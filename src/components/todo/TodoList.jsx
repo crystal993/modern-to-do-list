@@ -4,10 +4,13 @@ import { apis } from "../../shared/axios";
 import Todo from "./Todo";
 
 const TodoList = ({ setTodoList, todoList }) => {
+  const accessToken = localStorage.getItem("access_token");
   useEffect(() => {
-    apis.get_todos().then(({ data }) => {
-      setTodoList([...data]);
-    });
+    if (accessToken) {
+      apis.get_todos().then(({ data }) => {
+        setTodoList([...data]);
+      });
+    }
   }, []);
 
   const onDeleteHanlder = (todoId) => {
