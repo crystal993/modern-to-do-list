@@ -8,6 +8,7 @@ const GlobalInput = ({
   placeholder,
   required,
   value,
+  Ref,
   width,
   height,
   color,
@@ -27,6 +28,7 @@ const GlobalInput = ({
           color={color}
           fontSize={fontSize}
           required={required}
+          ref={Ref}
         />
       </StyledInputWrapper>
     </>
