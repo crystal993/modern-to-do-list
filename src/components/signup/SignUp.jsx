@@ -22,13 +22,19 @@ const SignUp = ({ setIsToggled }) => {
   const onChangeHandler = (e) => {
     const { value, name } = e.target;
     setFormData({ ...formData, [name]: value });
+    validation(name, value);
+  };
+
+  const validation = (name, value) => {
     if (name === "email") {
       if (!emailCheck(value)) {
         setEmailMsg("@를 포함해주세요.");
         setEmailMsgColor("#FF1F2F");
+        setEmailVaildCheck(false);
       } else {
         setEmailMsg("올바른 형식입니다.");
         setEmailMsgColor("#5D5FEF");
+        setEmailVaildCheck(true);
       }
     }
 
