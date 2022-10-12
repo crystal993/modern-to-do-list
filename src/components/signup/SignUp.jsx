@@ -43,25 +43,12 @@ const SignUp = ({ setIsToggled }) => {
     }
   };
 
-  const base = {
-    server_https: process.env.REACT_APP_HTTPS_URI,
-  };
-
-  const onSubmitHandler = async (e) => {
+  const onSubmitHandler = (e) => {
     e.preventDefault();
     if (!emailCheck(formData.email) || !passwordCheck(formData.password)) {
       alert("아이디나 비밀번호 형식이 틀렸습니다.");
     } else {
-      const { data } = await axios.post(
-        `${base.server_https}/auth/signup`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      if (data) setIsToggled(false);
+      apis.sign_up(formData).then(({ data }) => setIsToggled(false));
     }
   };
 
