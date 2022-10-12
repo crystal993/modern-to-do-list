@@ -44,6 +44,7 @@ export const apis = {
   create_todo: (todo) => {
     return instance.post("/todos", todo);
   },
+  get_todos: () => instance.get("/todos"),
   update_todo: (id, todo, isCompleted) => {
     return instance.put(`/todos/${id}`, { todo, isCompleted });
   },
