@@ -12,6 +12,7 @@ function GlobalButton({
   color,
   borderRadius = "0.5rem",
   padding = "1rem",
+  cursor,
 }) {
   return (
     <Wrapper onClick={onClick}>
@@ -25,6 +26,7 @@ function GlobalButton({
           color={color}
           padding={padding}
           borderRadius={borderRadius}
+          cursor={cursor}
         >
           {content}
         </Btn>
@@ -59,7 +61,7 @@ const Btn = styled.button`
       ? props.theme.gray
       : props.theme.mainColor};
   font-size: ${(props) => props.fontSize};
-  cursor: pointer;
+  cursor: ${(props) => props.cursor};
 `;
 
 export default GlobalButton;
