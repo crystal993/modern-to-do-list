@@ -47,3 +47,5 @@ export const apis = {
   update_todo: (id, todo, isCompleted) => {
     return instance.put(`/todos/${id}`, { todo, isCompleted });
   },
+  delete_todo: (id) => instance.delete(`/todos/${id}`),
+};

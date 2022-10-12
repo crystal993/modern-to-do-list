@@ -10,7 +10,11 @@ const TodoList = ({ setTodoList, todoList }) => {
     });
   }, []);
 
-  const onDeleteHanlder = (todoId) => {};
+  const onDeleteHanlder = (todoId) => {
+    apis.delete_todo(todoId).then((res) => {
+      setTodoList(todoList.filter((todo) => todo.id !== todoId));
+    });
+  };
 
   const onUpdateHandler = (todoId, todo, isCompleted) => {
     apis.update_todo(todoId, todo, isCompleted).then(({ data }) => {
