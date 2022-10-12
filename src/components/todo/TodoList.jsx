@@ -12,7 +12,20 @@ const TodoList = ({ setTodoList, todoList }) => {
 
   const onDeleteHanlder = (todoId) => {};
 
-  const onUpdateHandler = (todoId, todo, isCompleted) => {};
+  const onUpdateHandler = (todoId, todo, isCompleted) => {
+    apis.update_todo(todoId, todo, isCompleted).then(({ data }) => {
+      setTodoList(
+        todoList.map((todo) =>
+          todo.id === data.id
+            ? {
+                ...todo,
+                todo: data.todo,
+              }
+            : todo
+        )
+      );
+    });
+  };
 
   return (
     <Wrapper>
