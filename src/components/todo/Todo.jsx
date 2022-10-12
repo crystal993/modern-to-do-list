@@ -106,7 +106,10 @@ const Todo = ({ todo, onDeleteHanlder, onUpdateHandler }) => {
             padding={"0.6rem"}
           />
           <Button
-            onClick={() => setIsEdit(false)}
+            onClick={() => {
+              setIsEdit(false);
+              setTodoItem({ ...todoItem, todo: todo.todo });
+            }}
             content={"취소"}
             fontSize={"0.5rem"}
             padding={"0.6rem"}
