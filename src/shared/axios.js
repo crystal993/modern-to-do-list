@@ -5,7 +5,7 @@ const base = {
 };
 
 const instance = axios.create({
-  baseURL: base.server_https,
+  baseURL: process.env.REACT_APP_HTTPS_URI,
   headers: {
     "Content-Type": "application/json",
   },
