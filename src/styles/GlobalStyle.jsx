@@ -54,7 +54,7 @@ table {
 }
 body {
   font-size: 62.5%;
-	background-color: #ffffff;
+	background-color: #5D5FEF;
 }
 body * {
 	background-color: transparent;
