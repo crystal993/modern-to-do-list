@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../elements/GlobalButton";
 import Input from "../elements/GlobalInput";
@@ -17,17 +17,25 @@ const SignIn = ({ setIsToggled }) => {
   const [pwMsg, setPwMsg] = useState("");
   const [emailMsgColor, setEmailMsgColor] = useState("");
   const [pwMsgColor, setPwMsgColor] = useState("");
+  const [pwValidCheck, setPwVaildCheck] = useState(false);
+  const [emailValidCheck, setEmailVaildCheck] = useState(false);
 
   const onChangeHandler = (e) => {
     const { value, name } = e.target;
     setFormData({ ...formData, [name]: value });
+    validation(name, value);
+  };
+
+  const validation = (name, value) => {
     if (name === "email") {
       if (!emailCheck(value)) {
         setEmailMsg("@를 포함해주세요.");
         setEmailMsgColor("#FF1F2F");
+        setEmailVaildCheck(false);
       } else {
         setEmailMsg("올바른 형식입니다.");
         setEmailMsgColor("#5D5FEF");
+        setEmailVaildCheck(true);
       }
     }
 
@@ -35,9 +43,11 @@ const SignIn = ({ setIsToggled }) => {
       if (passwordCheck(value)) {
         setPwMsg("올바른 형식입니다.");
         setPwMsgColor("#5D5FEF");
+        setPwVaildCheck(true);
       } else {
         setPwMsg("8자리 이상 입력해주세요.");
         setPwMsgColor("#FF1F2F");
+        setPwVaildCheck(false);
       }
     }
   };
@@ -55,7 +65,7 @@ const SignIn = ({ setIsToggled }) => {
     }
   };
   return (
-    <Wrapper onSubmit={onSubmitHandler}>
+    <Wrapper>
       <Title>로그인</Title>
       <Form>
         <InputWrapper>
@@ -97,14 +107,31 @@ const SignIn = ({ setIsToggled }) => {
           <Label label={pwMsg} color={pwMsgColor}></Label>
         </InputWrapper>
         <ButtonWrapper>
-          <Button
-            width={"100%"}
-            height={"1.5rem"}
-            content={"로그인"}
-            fontSize={"0.8rem"}
-            borderRadius={"0.3rem"}
-            padding={"1.1rem"}
-          />
+          {pwValidCheck && emailValidCheck ? (
+            <Button
+              width={"100%"}
+              height={"1.5rem"}
+              content={"로그인"}
+              fontSize={"0.8rem"}
+              borderRadius={"0.3rem"}
+              padding={"1.1rem"}
+              onClick={onSubmitHandler}
+            />
+          ) : (
+            <Button
+              width={"100%"}
+              height={"1.5rem"}
+              content={"로그인"}
+              fontSize={"0.8rem"}
+              borderRadius={"0.3rem"}
+              padding={"1.1rem"}
+              color={"gray"}
+              onClick={(e) => {
+                e.preventDefault();
+                setIsToggled(false);
+              }}
+            />
+          )}
         </ButtonWrapper>
       </Form>
       <Label
