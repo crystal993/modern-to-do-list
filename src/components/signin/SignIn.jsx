@@ -5,8 +5,10 @@ import Input from "../elements/GlobalInput";
 import Label from "../elements/GlobalLabel";
 import { emailCheck, passwordCheck } from "../../shared/regex";
 import { apis } from "../../shared/axios";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = ({ setIsToggled }) => {
+  const navigate = useNavigate();
   const initialState = {
     email: "",
     password: "",
@@ -52,7 +54,7 @@ const SignIn = ({ setIsToggled }) => {
     }
   };
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
 
     if (!emailCheck(formData.email) || !passwordCheck(formData.password)) {
@@ -64,6 +66,14 @@ const SignIn = ({ setIsToggled }) => {
       });
     }
   };
+
+  const accessToken = localStorage.getItem("access_token");
+  useEffect(() => {
+    if (accessToken) {
+      navigate("/todo");
+    }
+  }, [navigate, accessToken]);
+
   return (
     <Wrapper>
       <Title>로그인</Title>
