@@ -10,6 +10,7 @@ const GlobalLabel = ({
   textDecoration,
   color = "black",
   cursor,
+  fontWeight,
 }) => {
   return (
     <LabelWrapper width={width} onClick={onClick}>
@@ -20,6 +21,7 @@ const GlobalLabel = ({
         textDecoration={textDecoration}
         cursor={cursor}
         width={width}
+        fontWeight={fontWeight}
       >
         {label}
       </StyledLabel>
@@ -45,7 +47,7 @@ const StyledLabel = styled.label`
   color: ${({ color, theme }) => (color ? color : theme.black)};
   text-decoration: ${({ textDecoration }) => textDecoration};
   cursor: ${({ cursor }) => cursor};
-  text-overflow: ellipsis;
+  font-weight: ${({ fontWeight }) => fontWeight};
 `;
 
 export default GlobalLabel;
