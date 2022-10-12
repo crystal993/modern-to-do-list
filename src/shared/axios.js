@@ -32,3 +32,7 @@ instance.interceptors.response.use(
 );
 
 export const apis = {};
+  //sign_in
+  sign_in: (formData) => {
+    return instance.post(`/auth/signin`, formData);
+  },

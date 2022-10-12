@@ -4,6 +4,7 @@ import Button from "../elements/GlobalButton";
 import Input from "../elements/GlobalInput";
 import Label from "../elements/GlobalLabel";
 import { emailCheck, passwordCheck } from "../../shared/regex";
+import { apis } from "../../shared/axios";
 
 const SignIn = ({ setIsToggled }) => {
   const initialState = {
@@ -47,7 +48,10 @@ const SignIn = ({ setIsToggled }) => {
     if (!emailCheck(formData.email) || !passwordCheck(formData.password)) {
       alert("아이디나 비밀번호 형식이 틀렸습니다.");
     } else {
-      setIsToggled(false);
+      apis.sign_in(formData).then(({ data }) => {
+        localStorage.setItem("access_token", data.access_token);
+        navigate("/todo");
+      });
     }
   };
   return (
