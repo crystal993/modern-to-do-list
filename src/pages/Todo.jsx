@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import CreateForm from "../components/todo/CreateForm";
 import TodoList from "../components/todo/TodoList";
 
 const Todo = () => {
+  const navigate = useNavigate();
   const [todoList, setTodoList] = useState([]);
+  const accessToken = localStorage.getItem("access_token");
+  useEffect(() => {
+    if (!accessToken) {
+      navigate("/");
+    }
+  }, [accessToken, navigate]);
 
   return (
     <Wrapper>
