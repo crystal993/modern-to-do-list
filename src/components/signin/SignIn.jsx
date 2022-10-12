@@ -156,7 +156,6 @@ const SignIn = ({ setIsToggled }) => {
 };
 
 const Wrapper = styled.div`
-  width: 35%;
   border-radius: 10px;
   background-color: #ffffff;
   margin: 0rem auto;
@@ -167,6 +166,18 @@ const Wrapper = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   padding: 5rem 0rem;
+  @media (min-width: 1280px) {
+    /* Desktop */
+    width: 35%;
+  }
+  @media (min-width: 768px) and (max-width: 1280px) {
+    /* Tablet */
+    width: 45%;
+  }
+  @media (max-width: 767px) {
+    /* Mobile */
+    width: 55%;
+  }
 `;
 
 const Title = styled.h1`
