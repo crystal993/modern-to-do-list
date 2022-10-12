@@ -19,6 +19,7 @@ const GlobalLabel = ({
         color={color}
         textDecoration={textDecoration}
         cursor={cursor}
+        width={width}
       >
         {label}
       </StyledLabel>
@@ -35,7 +36,7 @@ const LabelWrapper = styled.div`
 
 const StyledLabel = styled.label`
   text-align: left;
-  width: "2.5rem";
+  width: ${({ width }) => width};
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -44,6 +45,7 @@ const StyledLabel = styled.label`
   color: ${({ color, theme }) => (color ? color : theme.black)};
   text-decoration: ${({ textDecoration }) => textDecoration};
   cursor: ${({ cursor }) => cursor};
+  text-overflow: ellipsis;
 `;
 
 export default GlobalLabel;
