@@ -20,6 +20,10 @@ $ yarn start
 ```
 지금 프로젝트를 클론한 뒤 위 순서대로 실행하면 localhost:3000 포트에서 프로젝트가 실행됩니다.
 
+<br>
+<hr>
+<br>
+
 ## 🛠 기술 스택
 
 <div align=center> 
