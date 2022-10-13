@@ -110,9 +110,21 @@ $ yarn start
 
 ## 📹 데모 영상 
 
-### 회원가입 
+### 회원가입
+![회원가입](https://user-images.githubusercontent.com/72599761/195509542-308bb9b4-c610-4480-b390-9f3a328e1501.gif)
+
+<br>
+<br>
+
 ### 로그인
+![로그인](https://user-images.githubusercontent.com/72599761/195509591-1d763954-a9d2-4782-976c-06365ed22ecf.gif)
+
+<br>
+<br>
+
 ### TODO CRUD 
+![ToDo CRUD](https://user-images.githubusercontent.com/72599761/195509598-34232246-c09e-404a-89d8-b7792d34b18e.gif)
+
 <br>
 <hr>
 <br>
